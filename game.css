@@ -7,7 +7,7 @@ body{
     margin-bottom: 0.8rem;
     width: 100%;
     border-radius:4px;
-    background: rgb(18, 93, 255);
+    background: rgb(18, 148, 255);
     font-size: 3rem;
     min-width: 80rem;
 }
@@ -26,7 +26,7 @@ body{
 }
 
 .choice-text{
-    padding: 2 rem;
+    padding: 2rem;
     width:100;
 }
 
@@ -54,6 +54,14 @@ body{
 
 }
 
+
+#timer{
+    text-align:center;
+    font-size:2rem;
+}
+
+.
+/*
 #progressBar{
     width: 20rem;
     height: 3rem;
@@ -63,12 +71,14 @@ body{
     overflow:hidden;
 }
 
+
 #progressBarFull{
     height: 100%;
     background: rgb(11, 223, 36);
     width: 0%;
 }
 
+*/
 @media screen and (max-width: 768px){
     .choice-container{
         min-width: 40rem;
