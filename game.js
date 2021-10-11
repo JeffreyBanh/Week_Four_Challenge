@@ -1,13 +1,14 @@
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
 const scoreText = document.querySelector ('#score');
+const timerEl = document.getElementById('timer')
 
-
-let currentQuestion = {};
+let currentQuestions = {};
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
-let availableQuestion = [];
+let availableQuestions = [];
+var timeLeft = 60;
 
 let questions = [
     {
@@ -21,29 +22,29 @@ let questions = [
 
     {
         question: 'How much does the U.S lies beneath the ocean?',
-        choice1: '1',
-        choice2: '2',
-        choice3: '3',
-        choice4: '5',
-        answer: 4,
+        choice1: '50%',
+        choice2: '60%',
+        choice3: '30%',
+        choice4: '20%',
+        answer: 1,
     },
 
     {
-        question: 'What is 2 + 2?',
-        choice1: '1',
-        choice2: '4',
-        choice3: '3',
-        choice4: '2',
+        question: 'Which of these are the largest ocean in the world?',
+        choice1: 'Indian Ocean',
+        choice2: 'Pacific Ocean',
+        choice3: 'Atlantic Ocean',
+        choice4: 'Artic Ocean',
         answer: 2,
     },
 
     {
-        question: 'What is 2 + 3?',
-        choice1: '1',
-        choice2: '2',
-        choice3: '3',
-        choice4: '5',
-        answer: 4,
+        question: 'What is the fastest fish in the ocean?',
+        choice1: 'Bonita',
+        choice2: 'Wahoo',
+        choice3: 'Sail Fish',
+        choice4: 'Sword Fish',
+        answer: 3,
     }
 ]
 
@@ -53,8 +54,24 @@ const MAX_QUESTIONS = 4;
 function startGame() {
     score = 0
     availableQuestions = [...questions]
-
+    newQuestions()
 }
+
+function countdown() {
+    
+
+    var timeInterval = setInterval(function () {
+        if (timeLeft > 1) {
+        timerEl.textContent = timeLeft;
+        timeLeft--;
+        } 
+        else {
+        timerEl.textContent = '';
+        clearInterval(timeInterval);
+        return window.location.assign('/highscore.html')
+        }
+    }, 1000);
+    }
 
 function newQuestions(){
     if (availableQuestions.length === 0){
@@ -63,12 +80,12 @@ function newQuestions(){
     }
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionIndex]
-    question.innerHTML = currentQuestion.question
+    currentQuestions = availableQuestions[questionIndex]
+    question.innerHTML = currentQuestions.question
 
     choices.forEach(choice =>{
         const number = choice.dataset['number']
-        choice.innerHTML = currentQuestion['choice' + number]
+        choice.innerHTML = currentQuestions['choice' + number]
     })
 
     availableQuestions.splice(questionIndex, 1)
@@ -76,7 +93,7 @@ function newQuestions(){
 }
 
 startGame()
-newQuestions()
+countdown()
 
 choices.forEach(choice => {
     choice.addEventListener('click', event => {
@@ -85,10 +102,13 @@ choices.forEach(choice => {
         const selectedAnswer = selectedChoice.dataset['number']
         console.log(selectedAnswer)
 
-        let applyClass = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+        let applyClass = selectedAnswer == currentQuestions.answer ? 'correct' : 'incorrect'
 
         if (applyClass === 'correct'){
             incrementalScore(SCORE_POINTS)
+        }
+        else{
+            timeLeft = timeLeft - 10
         }
 
         selectedChoice.parentElement.classList.add(applyClass)
@@ -104,6 +124,7 @@ function incrementalScore(num){
     score += num
     scoreText.innerText = score
 }
+
 /*
 function startgame(){
     availableQuestion = [...questions]
