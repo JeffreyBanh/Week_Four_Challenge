@@ -1,6 +1,6 @@
 const highScoresList = document.querySelector("#highScoresList")
 const highScores = JSON.parse(localStorage.getItem('highScores')) || []
-
+console.log(highScores)
 highScores.map(getFull);
 
 function getFull(item){

@@ -98,10 +98,7 @@ countdown()
 choices.forEach(choice => {
     choice.addEventListener('click', event => {
         const selectedChoice = event.target
-        console.log(selectedChoice)
         const selectedAnswer = selectedChoice.dataset['number']
-        console.log(selectedAnswer)
-
         let applyClass = selectedAnswer == currentQuestions.answer ? 'correct' : 'incorrect'
 
         if (applyClass === 'correct'){
@@ -125,22 +122,3 @@ function incrementalScore(num){
     scoreText.innerText = score
 }
 
-/*
-function startgame(){
-    availableQuestion = [...questions]
-    newQuestions()
-}
-
-function newQuestions(){
-
-    const questionIndex = Math.floor(Math.random() * availableQuestion.length)
-    currentQuestion = availableQuestion[questionIndex]
-    questions.innerHTMl = currentQuestion.questions
-
-    choice.forEach(choice=>{
-        const number = choice.dataset['number']
-        choice.innerHTML = currentQuestion['choice' + number]
-})
-
-
-*/
