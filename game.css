@@ -27,7 +27,7 @@ body{
 
 .choice-text{
     padding: 2rem;
-    width:100;
+    width: 100%;
 }
 
 .correct{
@@ -60,7 +60,7 @@ body{
     font-size:2rem;
 }
 
-.
+
 /*
 #progressBar{
     width: 20rem;
@@ -79,6 +79,7 @@ body{
 }
 
 */
+
 @media screen and (max-width: 768px){
     .choice-container{
         min-width: 40rem;
