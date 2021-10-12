@@ -6,7 +6,6 @@ const timerEl = document.getElementById('timer')
 let currentQuestions = {};
 let acceptingAnswers = true;
 let score = 0;
-let questionCounter = 0;
 let availableQuestions = [];
 var timeLeft = 60;
 
