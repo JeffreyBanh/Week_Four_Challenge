@@ -75,7 +75,7 @@ function countdown() {
 function newQuestions(){
     if (availableQuestions.length === 0){
         localStorage.setItem('mostRecentScore', score)
-        return window.location.assign('/highscore.html')
+        return window.location.assign('./highscore.html')
     }
 
     const questionIndex = Math.floor(Math.random() * availableQuestions.length)
